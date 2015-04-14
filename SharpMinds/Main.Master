@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="SharpMinds.Main" %>
+
+<%@ Register Src="~/Controls/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>
+<%@ Register Src="~/Controls/Header.ascx" TagPrefix="uc1" TagName="Header" %>
+<%@ Register Src="~/Controls/Menu.ascx" TagPrefix="uc1" TagName="Menu" %>
+
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="Content/MyStyle.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <uc1:Header runat="server" ID="Header" />
+        <div class="row">
+            <div class="col-md-2">
+                <uc1:Menu runat="server" ID="Menu" />
+            </div>
+            <div class="col-md-10">
+                <div >
+                        
+                </div>
+                <div class="container">
+                    <asp:Label CssClass="alert alert-success" Visible="false" runat="server" ID="lblNotificationSuccess"></asp:Label>
+                        <asp:Label runat="server" Visible="false" CssClass="alert alert-danger" ID="lblNotificationError"></asp:Label>
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+
+
+
+        <uc1:Footer runat="server" ID="Footer" />
+    </form>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/jquery-1.9.0.intellisense.js"></script>
+    <script src="Scripts/jquery-1.9.0.js"></script>
+</body>
+</html>
