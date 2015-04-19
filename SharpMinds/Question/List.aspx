@@ -10,5 +10,5 @@
             <asp:HyperLinkField DataNavigateUrlFields="QuestionId" DataNavigateUrlFormatString="~/Option/Create.aspx?QId={0}" Text="Add Option" />
         </Columns>
     </asp:GridView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=SharpMinds;Integrated Security=True;User ID=sa;Password=admin@123" ProviderName="System.Data.SqlClient" SelectCommand="SELECT Tag.TagName, Question.* FROM Question INNER JOIN Tag ON Question.TagId = Tag.TagId"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SharpMindsConnectionString %>" ProviderName="System.Data.SqlClient" SelectCommand="SELECT Tag.TagName, Question.* FROM Question INNER JOIN Tag ON Question.TagId = Tag.TagId"></asp:SqlDataSource>
 </asp:Content>

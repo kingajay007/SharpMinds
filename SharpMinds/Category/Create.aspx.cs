@@ -22,9 +22,10 @@ namespace SharpMinds.Category
             e.Values.Add("UpdatedBy", UserId);
         }
 
-        protected void DetailsView1_ItemCreated(object sender, EventArgs e)
+        protected void customValidatoryCategoryName_ServerValidate(object sender, ServerValidateEventArgs args)
         {
-
+            TextBox tb = DetailsView1.FindControl("TextBox1") as TextBox;
+            args.IsValid = (tb.Text.Length > 2 && tb.Text.Length < 50);
         }
     }
 }

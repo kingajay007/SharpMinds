@@ -2,14 +2,31 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateInsertButton="True" OnItemInserting="DetailsView1_ItemInserting" AutoGenerateRows="False" CellPadding="4" DataKeyNames="CategoryId" DataSourceID="SqlDataSource1" DefaultMode="Insert" ForeColor="#333333" GridLines="None" Height="50px" Width="125px" OnItemCreated="DetailsView1_ItemCreated">
+    <asp:DetailsView ID="DetailsView1" runat="server"  OnItemInserting="DetailsView1_ItemInserting" AutoGenerateRows="False" CellPadding="4" DataKeyNames="CategoryId" DataSourceID="SqlDataSource1" DefaultMode="Insert" ForeColor="#333333" HeaderText="Create Category" GridLines="None" Height="50px" Width="324px" >
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#C5BBAF" Font-Bold="True" />
         <EditRowStyle BackColor="#7C6F57" />
         <FieldHeaderStyle BackColor="#D0D0D0" Font-Bold="True" />
         <Fields>
             
-            <asp:BoundField DataField="CategoryName" HeaderText="Name" SortExpression="CategoryName" />
+            <asp:TemplateField HeaderText="Name" SortExpression="CategoryName">
+                <InsertItemTemplate>
+                    <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" Text='<%# Bind("CategoryName") %>'></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" Display="Dynamic" ErrorMessage="RequiredFieldValidator">Category Name is Required</asp:RequiredFieldValidator>
+                    <asp:CustomValidator ID="customValidatoryCategoryName" runat="server" Display="Dynamic" ControlToValidate="TextBox1" OnServerValidate="customValidatoryCategoryName_ServerValidate" ErrorMessage="Category name must contain 3 - 50 characters" ></asp:CustomValidator>
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("CategoryName") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            
+            <asp:TemplateField ShowHeader="False">
+                <InsertItemTemplate>
+                    <asp:LinkButton ID="LinkButton1" CssClass="btn btn-primary" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert"></asp:LinkButton>
+                    &nbsp;<asp:LinkButton ID="LinkButton2" CssClass="btn btn-info" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel"></asp:LinkButton>
+                </InsertItemTemplate>
+               
+            </asp:TemplateField>
             
         </Fields>
         <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -18,35 +35,15 @@
         <RowStyle BackColor="#E3EAEB" />
     </asp:DetailsView>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:SharpMindsConnectionString %>" 
-        DeleteCommand="DELETE FROM [Category] WHERE [CategoryId] = @original_CategoryId AND [CategoryName] = @original_CategoryName AND [CreatedOn] = @original_CreatedOn AND [ModifiedOn] = @original_ModifiedOn AND [CreatedBy] = @original_CreatedBy AND [Updatedby] = @original_Updatedby" 
         InsertCommand="INSERT INTO [Category] ([CategoryName], [CreatedBy], [Updatedby]) VALUES ( @CategoryName, @CreatedBy, @Updatedby)"
          OldValuesParameterFormatString="original_{0}" 
         SelectCommand="SELECT * FROM [Category]" 
-        UpdateCommand="UPDATE [Category] SET [CategoryName] = @CategoryName, [CreatedOn] = @CreatedOn, [ModifiedOn] = @ModifiedOn, [CreatedBy] = @CreatedBy, [Updatedby] = @Updatedby WHERE [CategoryId] = @original_CategoryId AND [CategoryName] = @original_CategoryName AND [CreatedOn] = @original_CreatedOn AND [ModifiedOn] = @original_ModifiedOn AND [CreatedBy] = @original_CreatedBy AND [Updatedby] = @original_Updatedby">
-        <DeleteParameters>
-            <asp:Parameter Name="original_CategoryId" Type="Int32" />
-            <asp:Parameter Name="original_CategoryName" Type="String" />
-            <asp:Parameter DbType="Date" Name="original_CreatedOn" />
-            <asp:Parameter DbType="Date" Name="original_ModifiedOn" />
-            <asp:Parameter Name="original_CreatedBy" Type="Object" />
-            <asp:Parameter Name="original_Updatedby" Type="Object" />
-        </DeleteParameters>
+        >
+    
         <InsertParameters>
             <asp:Parameter Name="CategoryName" Type="String" />
            
         </InsertParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="CategoryName" Type="String" />
-            <asp:Parameter DbType="Date" Name="CreatedOn" />
-            <asp:Parameter DbType="Date" Name="ModifiedOn" />
-            <asp:Parameter Name="CreatedBy" />
-            <asp:Parameter Name="Updatedby" />
-            <asp:Parameter Name="original_CategoryId" Type="Int32" />
-            <asp:Parameter Name="original_CategoryName" Type="String" />
-           <%-- <asp:Parameter DbType="Date" Name="original_CreatedOn" />
-            <asp:Parameter DbType="Date" Name="original_ModifiedOn" />--%>
-           <%-- <asp:Parameter Name="original_CreatedBy" Type="Object" />
-            <asp:Parameter Name="original_Updatedby" Type="Object" />--%>
-        </UpdateParameters>
+     
     </asp:SqlDataSource>
 </asp:Content>
