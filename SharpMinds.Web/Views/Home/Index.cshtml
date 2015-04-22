@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+
+    <form class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-6">
+                <label>Select Category</label>
+                <div>
+                    <select id="CategoryId" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label>Select Tag</label>
+                <div class="col-md-6">
+                    <select id="TagId" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-primary">Submit</button>
+    </form>
+  
+    <div id="questionArea"></div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        var Category = {CategoryId: '',CategoryName: ''};
+        $(document).ready(function () {
+            $.ajax({
+                url: '/Home/GetCategories',
+                async: true,
+                type: 'GET',
+                dataType: 'json',
+                success: function (response) {  fillOptions('CategoryId',response) },
+                //error : alert('Error happened...')
+            });
+
+            $('#CategoryId').change(function () {
+                var selectedId = this.value;
+                $.ajax({
+                    url: '/Home/GetTags',
+                    async: true,
+                    data: {categoryId:selectedId },
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (response) { fillOptions('TagId', response) },
+                    //error: alert('Error happened...')
+                });
+            });
+
+            $('#TagId').change(function () {
+                var selectedId = this.value;
+                if (selectedId!==0) {
+                    $.ajax({
+                        url: '/Home/Questions',
+                        async: true,
+                        data: { tagId: selectedId },
+                        type: 'GET',
+                        dataType: 'html',
+                        success: function (response) { fillHtml('questionArea', response) },
+                        //error: alert('Error happened...')
+                    });
+                }
+               
+            });
+        });
+
+        function fillHtml(id,data)
+        {
+            var element = $('#' + id);
+            if (data !== null) {
+                element.empty();
+                element.html(data);
+            }
+        }
+
+        function fillOptions(id, data) {
+            var selectItem = $("#" + id);
+            selectItem.empty();
+            selectItem.append('<option value="0">--------Select-----</option>');
+            if (data!==null) {
+                $.each(data, function (i, e) {
+                    var htmlContent = '<option value="'+e.Value+'">'+e.Text+'</option>';
+                    selectItem.append(htmlContent);
+                });
+            }
+        }
+    </script>
