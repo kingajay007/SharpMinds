@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
+using System.Drawing;
 
 namespace SharpMinds.BAL
 {
@@ -80,6 +81,44 @@ namespace SharpMinds.BAL
                 }
             }
             return dt;
+        }
+
+        public Picture GetImageById(int imageId)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString))
+            {
+                Picture picture = null;
+                using (SqlCommand comm = new SqlCommand())
+                {
+                    comm.Connection = conn;
+                    string command = string.Format("select * from Image where ImageId ={0}",imageId);
+                    comm.CommandText = command;
+
+                    conn.Open();
+
+                    SqlDataReader sdr = comm.ExecuteReader();
+                    if (sdr.HasRows)
+                    {
+                        picture = new Picture();
+                    while (sdr.Read())
+                    {
+                        picture.ImageId = Convert.ToInt32(sdr["ImageId"]);
+                        picture.ImageName = (string)sdr["ImageName"];
+                        picture.MIME = (string)sdr["MIME"];
+                        picture.ImageData = (byte[])sdr["ImageData"];
+                    }
+                    }
+                    return picture;
+                }
+            }
+        }
+
+        public Image GetImageFromByteArray(byte[] imageData)
+        {
+            using (System.IO.MemoryStream ms = new System.IO.MemoryStream(imageData))
+            {
+                return Image.FromStream(ms);
+            }
         }
     }
 }

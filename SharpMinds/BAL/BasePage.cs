@@ -28,5 +28,11 @@ namespace SharpMinds.BAL
         {
             Notification(NotifyType.Error, message);
         }
+
+        public string CheckQueryString(string key)
+        {
+            string queryString = Request.QueryString[key];
+            return queryString;
+        }
     }
 }

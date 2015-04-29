@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SharpMindsService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8733/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SharpMinds.Service.Category" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ISharpMindsService_GetCategories_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategories" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetCategories_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetTagsByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagsByCategory" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetTagsByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagsByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetQuestionsWithTagId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionsWithTagId" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetQuestionsWithTagId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionsWithTagIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetRandomQuestion_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRandomQuestion" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetRandomQuestion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRandomQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetCategoryById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryById" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetCategoryById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetTagById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagById" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetTagById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTagByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetQuestionsByCategory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionsByCategory" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetQuestionsByCategory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQuestionsByCategoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetCategoryWithTags_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryWithTags" />
+  </wsdl:message>
+  <wsdl:message name="ISharpMindsService_GetCategoryWithTags_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCategoryWithTagsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ISharpMindsService">
+    <wsdl:operation name="GetCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISharpMindsService/GetCategories" message="tns:ISharpMindsService_GetCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISharpMindsService/GetCategoriesResponse" message="tns:ISharpMindsService_GetCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagsByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISharpMindsService/GetTagsByCategory" message="tns:ISharpMindsService_GetTagsByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISharpMindsService/GetTagsByCategoryResponse" message="tns:ISharpMindsService_GetTagsByCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionsWithTagId">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISharpMindsService/GetQuestionsWithTagId" message="tns:ISharpMindsService_GetQuestionsWithTagId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISharpMindsService/GetQuestionsWithTagIdResponse" message="tns:ISharpMindsService_GetQuestionsWithTagId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRandomQuestion">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISharpMindsService/GetRandomQuestion" message="tns:ISharpMindsService_GetRandomQuestion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISharpMindsService/GetRandomQuestionResponse" message="tns:ISharpMindsService_GetRandomQuestion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISharpMindsService/GetCategoryById" message="tns:ISharpMindsService_GetCategoryById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISharpMindsService/GetCategoryByIdResponse" message="tns:ISharpMindsService_GetCategoryById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTagById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISharpMindsService/GetTagById" message="tns:ISharpMindsService_GetTagById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISharpMindsService/GetTagByIdResponse" message="tns:ISharpMindsService_GetTagById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionsByCategory">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISharpMindsService/GetQuestionsByCategory" message="tns:ISharpMindsService_GetQuestionsByCategory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISharpMindsService/GetQuestionsByCategoryResponse" message="tns:ISharpMindsService_GetQuestionsByCategory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryWithTags">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISharpMindsService/GetCategoryWithTags" message="tns:ISharpMindsService_GetCategoryWithTags_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISharpMindsService/GetCategoryWithTagsResponse" message="tns:ISharpMindsService_GetCategoryWithTags_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ISharpMindsService" type="tns:ISharpMindsService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCategories">
+      <soap:operation soapAction="http://tempuri.org/ISharpMindsService/GetCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagsByCategory">
+      <soap:operation soapAction="http://tempuri.org/ISharpMindsService/GetTagsByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionsWithTagId">
+      <soap:operation soapAction="http://tempuri.org/ISharpMindsService/GetQuestionsWithTagId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRandomQuestion">
+      <soap:operation soapAction="http://tempuri.org/ISharpMindsService/GetRandomQuestion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryById">
+      <soap:operation soapAction="http://tempuri.org/ISharpMindsService/GetCategoryById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTagById">
+      <soap:operation soapAction="http://tempuri.org/ISharpMindsService/GetTagById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetQuestionsByCategory">
+      <soap:operation soapAction="http://tempuri.org/ISharpMindsService/GetQuestionsByCategory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategoryWithTags">
+      <soap:operation soapAction="http://tempuri.org/ISharpMindsService/GetCategoryWithTags" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SharpMindsService">
+    <wsdl:port name="BasicHttpBinding_ISharpMindsService" binding="tns:BasicHttpBinding_ISharpMindsService">
+      <soap:address location="http://localhost:8733/GetCategories" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

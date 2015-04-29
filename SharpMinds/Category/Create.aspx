@@ -14,6 +14,18 @@
                     <asp:TextBox ID="TextBox1" CssClass="form-control" runat="server" Text='<%# Bind("CategoryName") %>'></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" Display="Dynamic" ErrorMessage="RequiredFieldValidator">Category Name is Required</asp:RequiredFieldValidator>
                     <asp:CustomValidator ID="customValidatoryCategoryName" runat="server" Display="Dynamic" ControlToValidate="TextBox1" OnServerValidate="customValidatoryCategoryName_ServerValidate" ErrorMessage="Category name must contain 3 - 50 characters" ></asp:CustomValidator>
+                   
+                </InsertItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("CategoryName") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+             <asp:TemplateField HeaderText="Image" SortExpression="ImageId">
+                <InsertItemTemplate>
+                    <asp:FileUpload runat="server" ID="CategoryImageUpload" CssClass="form-control" />
+                    <br />
+                    <asp:Image  ID="CategoryImage" DescriptionUrl='<%#Bind("ImageId") %>' runat="server"/>
+                    <asp:Button runat="server" OnClick="btnUpload_Click" ID="btnUpload" Text="Upload" />
                 </InsertItemTemplate>
                 <ItemTemplate>
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("CategoryName") %>'></asp:Label>
@@ -34,15 +46,15 @@
         <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="#E3EAEB" />
     </asp:DetailsView>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:SharpMindsConnectionString %>" 
-        InsertCommand="INSERT INTO [Category] ([CategoryName], [CreatedBy], [Updatedby]) VALUES ( @CategoryName, @CreatedBy, @Updatedby)"
+    <asp:SqlDataSource EnableViewState="true" ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:SharpMindsConnectionString %>" 
+        InsertCommand="INSERT INTO [Category] ([CategoryName],[ImageId] ,[CreatedBy], [Updatedby]) VALUES ( @CategoryName,@ImageId,@CreatedBy, @Updatedby)"
          OldValuesParameterFormatString="original_{0}" 
         SelectCommand="SELECT * FROM [Category]" 
         >
     
         <InsertParameters>
             <asp:Parameter Name="CategoryName" Type="String" />
-           
+           <asp:Parameter Name="ImageId"  Type="Int32"/>
         </InsertParameters>
      
     </asp:SqlDataSource>

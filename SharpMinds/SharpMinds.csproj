@@ -112,6 +112,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Controls\FileUploadControl.ascx" />
+    <Content Include="Controls\LoginControl.ascx" />
+    <Content Include="Controls\SignIn.ascx" />
+    <Content Include="Controls\SignUp.ascx" />
+    <Content Include="Handlers\ImageHandler.ashx" />
     <None Include="Properties\PublishProfiles\SharpMinds_Admin.pubxml" />
     <None Include="Service References\ServiceReference1\item.xsd">
       <SubType>Designer</SubType>
@@ -124,6 +129,7 @@
     </None>
     <Content Include="Content\Site.css" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Question\AddQuestionByTag.aspx" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -139,6 +145,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ServiceReference1\SharpMindsService.wsdl" />
+    <Content Include="Tag\Edit.aspx" />
+    <Content Include="Tag\List.aspx" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -198,6 +206,8 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BAL\CommonDbTask.cs" />
+    <Compile Include="BAL\MediaUpload.cs" />
+    <Compile Include="BAL\Picture.cs" />
     <Compile Include="Category\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -219,6 +229,13 @@
     <Compile Include="Category\List.aspx.designer.cs">
       <DependentUpon>List.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FileUploadControl.ascx.cs">
+      <DependentUpon>FileUploadControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\FileUploadControl.ascx.designer.cs">
+      <DependentUpon>FileUploadControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Footer.ascx.cs">
       <DependentUpon>Footer.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -233,12 +250,33 @@
     <Compile Include="Controls\Header.ascx.designer.cs">
       <DependentUpon>Header.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LoginControl.ascx.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\LoginControl.ascx.designer.cs">
+      <DependentUpon>LoginControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Menu.ascx.cs">
       <DependentUpon>Menu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\Menu.ascx.designer.cs">
       <DependentUpon>Menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SignIn.ascx.cs">
+      <DependentUpon>SignIn.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\SignIn.ascx.designer.cs">
+      <DependentUpon>SignIn.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SignUp.ascx.cs">
+      <DependentUpon>SignUp.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\SignUp.ascx.designer.cs">
+      <DependentUpon>SignUp.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -249,6 +287,9 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -272,6 +313,13 @@
       <DependentUpon>Create.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question\AddQuestionByTag.aspx.cs">
+      <DependentUpon>AddQuestionByTag.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Question\AddQuestionByTag.aspx.designer.cs">
+      <DependentUpon>AddQuestionByTag.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Question\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -298,12 +346,31 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="StaticResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StaticResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tag\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Tag\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tag\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tag\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tag\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tag\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -317,6 +384,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="StaticResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>StaticResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

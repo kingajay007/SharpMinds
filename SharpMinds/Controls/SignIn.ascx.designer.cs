@@ -7,18 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SharpMinds {
+namespace SharpMinds.Controls {
     
     
-    public partial class Default {
+    public partial class SignIn {
         
         /// <summary>
-        /// FileUploadControl control.
+        /// Login1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SharpMinds.Controls.FileUploadControl FileUploadControl;
+        protected global::System.Web.UI.WebControls.Login Login1;
     }
 }

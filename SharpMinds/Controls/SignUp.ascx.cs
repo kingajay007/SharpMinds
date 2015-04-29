@@ -5,15 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SharpMinds
+namespace SharpMinds.Controls
 {
-    public partial class Default : System.Web.UI.Page
+    public partial class SignUp : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //ServiceReference1.SharpMindsServiceClient client = new ServiceReference1.SharpMindsServiceClient();
-            
-            
+
         }
     }
 }
