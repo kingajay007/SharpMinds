@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:DetailsView ID="DetailsView1" runat="server"  OnItemInserting="DetailsView1_ItemInserting" AutoGenerateRows="False" CellPadding="4" DataKeyNames="CategoryId" DataSourceID="SqlDataSource1" DefaultMode="Insert" ForeColor="#333333" HeaderText="Create Category" GridLines="None" Height="50px" Width="324px" >
+    <asp:DetailsView ID="DetailsView1" runat="server"  OnItemInserting="DetailsView1_ItemInserting" AutoGenerateRows="False" CellPadding="4" DataKeyNames="CategoryId" DataSourceID="SqlDataSource1" DefaultMode="Insert" ForeColor="#333333" OnItemInserted="DetailsView1_ItemInserted" HeaderText="Create Category" GridLines="None" Height="50px" Width="324px" >
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#C5BBAF" Font-Bold="True" />
         <EditRowStyle BackColor="#7C6F57" />
@@ -20,17 +20,7 @@
                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("CategoryName") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-             <asp:TemplateField HeaderText="Image" SortExpression="ImageId">
-                <InsertItemTemplate>
-                    <asp:FileUpload runat="server" ID="CategoryImageUpload" CssClass="form-control" />
-                    <br />
-                    <asp:Image  ID="CategoryImage" DescriptionUrl='<%#Bind("ImageId") %>' runat="server"/>
-                    <asp:Button runat="server" OnClick="btnUpload_Click" ID="btnUpload" Text="Upload" />
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("CategoryName") %>'></asp:Label>
-                </ItemTemplate>
-            </asp:TemplateField>
+          
             
             <asp:TemplateField ShowHeader="False">
                 <InsertItemTemplate>
@@ -46,10 +36,16 @@
         <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="#E3EAEB" />
     </asp:DetailsView>
-    <asp:SqlDataSource EnableViewState="true" ID="SqlDataSource1" runat="server" ConflictDetection="CompareAllValues" ConnectionString="<%$ ConnectionStrings:SharpMindsConnectionString %>" 
-        InsertCommand="INSERT INTO [Category] ([CategoryName],[ImageId] ,[CreatedBy], [Updatedby]) VALUES ( @CategoryName,@ImageId,@CreatedBy, @Updatedby)"
-         OldValuesParameterFormatString="original_{0}" 
-        SelectCommand="SELECT * FROM [Category]" 
+    <asp:SqlDataSource 
+        EnableViewState="true" 
+        ID="SqlDataSource1" 
+        runat="server" 
+        ConflictDetection="CompareAllValues" 
+        ConnectionString="<%$ ConnectionStrings:SharpMindsConnectionString %>" 
+        InsertCommand="uspInsertCategory"
+        OldValuesParameterFormatString="original_{0}" 
+        SelectCommand="SELECT * FROM [Category]"
+        InsertCommandType="StoredProcedure"
         >
     
         <InsertParameters>
